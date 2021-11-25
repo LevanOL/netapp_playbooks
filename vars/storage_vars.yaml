@@ -1,11 +1,11 @@
 ---
 #
-prodnetapp: {{ jc-ntap01p }}
-drnetapp: {{ jp-ntap02p }}
-hostname: {{ prodnetapp.ip }}
-username: {{ prodnetapp.username }}
-password: {{ prodnetapp.password }}
+prodnetapp: "{{ jc-ntap01p }}"
+drnetapp: "{{ jp-ntap02p }}"
+hostname: "{{ prodnetapp.ip }}"
+username: "{{ prodnetapp.username }}"
+password: "{{ prodnetapp.password }}"
 aggregate_name: "JC_NTAP01_01_VM_DISK_1"
-vserver: svm1
+vserver: "svm1"
 size_logs1: 50
-ostype: aix
+ostype: "aix"
