@@ -11,4 +11,4 @@ size: 50
 ostype: aix
 volname: ""
 lunname: ""
-suffix: _vol
+suffix: vol
