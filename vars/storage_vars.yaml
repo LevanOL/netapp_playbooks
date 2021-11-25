@@ -5,7 +5,7 @@
 hostname: 10.8.49.73
 username: scriptuser
 password: "St0rage4321!"
-aggregate_name: JC_NTAP01_01_VM_DISK_1
+aggr: JC_NTAP01_01_VM_DISK_1
 vserver: svm1
 size: 50
 ostype: aix
