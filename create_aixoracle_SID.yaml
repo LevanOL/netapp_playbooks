@@ -13,7 +13,7 @@
 # LUN machine_home
     - set_fact:
         suffix: "_home"
-        size: {{ size_home }}
+        size: "{{ size_home }}"
         volname: "{{ machine }}_{{ suffix }}"
         lunname: "{{ volname }}"
     - include: tasks/create_aixoracle_lun.yaml
@@ -28,7 +28,7 @@
 # LUN data
     - set_fact:
         suffix: "_data{{ OSID }} "
-        size: {{ size_datasid }}
+        size: "{{ size_datasid }}"
         volname: "{{ machine }}_{{ suffix }}"
         lunname: "{{ volname }}"
     - include: tasks/create_aixoracle_lun.yaml
