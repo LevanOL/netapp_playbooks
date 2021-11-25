@@ -7,5 +7,8 @@ username: scriptuser
 password: "St0rage4321!"
 aggregate_name: JC_NTAP01_01_VM_DISK_1
 vserver: svm1
-size_logs1: 50
+size: 50
 ostype: aix
+volname: ""
+lunname: ""
+suffix: _vol

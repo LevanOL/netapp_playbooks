@@ -12,14 +12,14 @@
   tasks:
 # LUN machine_home
     - set_fact:
-        suffix: "_home"
+        suffix: _home
         size: "{{ size_home }}"
         volname: "{{ machine }}_{{ suffix }}"
         lunname: "{{ volname }}"
     - include_tasks: tasks/create_aixoracle_lun.yaml
 # LUN logs1
     - set_fact:
-        suffix: "_logs1"
+        suffix: _logs1
         size: 18
         volname: "{{ machine }}_{{ suffix }}"
         lunname: "{{ volname }}"
