@@ -13,21 +13,21 @@
 # LUN machine_home
     - include_tasks: tasks/create_aixoracle_lun.yaml
       vars:
-        suffix: _home
+        suffix: home
         size: "{{ size_home }}"
         volname: "{{ machine }}_{{ suffix }}"
         lunname: "{{ volname }}"
 # LUN logs1
     - include_tasks: tasks/create_aixoracle_lun.yaml
       vars:
-        suffix: _logs1
+        suffix: logs1
         size: 18
         volname: "{{ machine }}_{{ suffix }}"
         lunname: "{{ volname }}"
 # LUN data
     - include_tasks: tasks/create_aixoracle_lun.yaml
       vars:
-        suffix: "_data{{ OSID }} "
+        suffix: "data{{ OSID }} "
         size: "{{ size_datasid }}"
         volname: "{{ machine }}_{{ suffix }}"
         lunname: "{{ volname }}"
