@@ -1,7 +1,7 @@
 ---
 # Create Production LUNs and Volumes for Oracle DBs on AIX
 # LUNs/Volumes: home, logs1, logs2, arch, dataSID, tempSID
-- hosts: all
+- hosts: localhost
   name: Create LUNS set for Oracle on AIX
   collections:
     - netapp.ontap
