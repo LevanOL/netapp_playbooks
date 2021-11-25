@@ -23,7 +23,7 @@
         size: 18
         volname: "{{ machine }}_{{ suffix }}"
         lunname: "{{ volname }}"
-    -include: tasks/create_aixoracle_lun.yaml
+    - include: tasks/create_aixoracle_lun.yaml
 
 # LUN data
     - set_fact:
@@ -31,6 +31,6 @@
         size: {{ size_datasid }}
         volname: "{{ machine }}_{{ suffix }}"
         lunname: "{{ volname }}"
-    -include: tasks/create_aixoracle_lun.yaml
+    - include: tasks/create_aixoracle_lun.yaml
 
       
