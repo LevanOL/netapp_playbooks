@@ -27,7 +27,7 @@
 # LUN data
     - include_tasks: tasks/create_aixoracle_lun.yaml
       vars:
-        suffix: "data{{ OSID }} "
+        suffix: "data{{ OSID }}"
         size: "{{ size_datasid }}"
         volname: "{{ machine }}_{{ suffix }}"
         lunname: "{{ volname }}"
