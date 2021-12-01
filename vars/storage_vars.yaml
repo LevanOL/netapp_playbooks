@@ -11,7 +11,7 @@ src_cluster: "{{ src_netapp.clustername }}"
 src_vserver: "{{ src_netapp.src_svm }}"
 dest_cluster: "{{ dest_netapp.clustername }}"
 dest_vserver: "{{ dest_netapp.dest_svm }}"
-size: 50
+size: 1
 ostype: aix
 volname: ""
 lunname: ""

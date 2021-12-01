@@ -14,7 +14,7 @@
     - include_tasks: tasks/create_aixoracle_lun_and_snapmirror.yaml
       vars:
         suffix: oltest
-        size: "{{ size }}"
+        size: 1
         volname: "{{ machine }}_{{ suffix }}"
         lunname: "{{ volname }}"
         dest_volname: "dr{{ machine }}_{{ suffix }}"
