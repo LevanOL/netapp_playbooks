@@ -8,6 +8,9 @@
     size_unit: gb
     junction_path: "/{{ volname }}"
     space_guarantee: "none"
+    inline_compression: yes
+    type: RW
+    volume_security_style: unix
     vserver: "{{ vserver }}"
     hostname: "{{ hostname }}"
     username: "{{ username }}"

@@ -1,0 +1,57 @@
+---
+- name: Create volume
+  na_ontap_volume:
+    state: present
+    name: "{{ volname }}"
+    aggregate_name: "{{ aggr }}"
+    size: "{{ size }}" 
+    size_unit: gb
+    junction_path: "/{{ volname }}"
+    space_guarantee: "none"
+    inline_compression: yes
+    type: RW
+    volume_security_style: unix
+    vserver: "{{ src_vserver }}"
+    hostname: "{{ src_hostname }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    https: true
+    validate_certs: false
+- name: Create LUN
+  na_ontap_lun:
+    state: present
+    vserver: "{{ src_vserver }}"
+    name: "{{ lunname }}"
+    flexvol_name: "{{ volname }}"
+    size: "{{ size }}"
+    size_unit: gb
+    ostype: "{{ ostype }}"
+    space_reserve: False
+    https: true
+    validate_certs: false
+    hostname: "{{ src_hostname }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+- name: Create Snapmirror
+  na_ontap_snapmirror:
+    state: present
+    connection_type: ontap_ontap
+    source_endpoint:
+      cluster: "{{ src_cluster }}"
+      path: "{{ src_vserver + ':' + volname }}"
+    destination_endpoint:
+      cluster: "{{ dest_cluster }}"
+      path: "{{ dest_vserver + ':' + volname }}"
+    create_destination:
+      enabled: true
+    initialize: yes
+    relationship_type: data_protection
+    relationship_state: active
+    schedule: 5min
+    policy: DPDefault
+    hostname: "{{ dest_hostname }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    https: true
+    validate_certs: false
+    

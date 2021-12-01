@@ -1,12 +1,16 @@
 ---
 #
-# prodnetapp: "{{ jc-ntap01p }}"
-# drnetapp: "{{ jp-ntap02p }}"
-hostname: 10.8.49.73
-username: scriptuser
-password: "St0rage4321!"
-aggr: JC_NTAP01_01_VM_DISK_1
-vserver: svm1
+src_netapp: "{{ jc-ntap01p }}"
+dest_netapp: "{{ jp-ntap02p }}"
+src_hostname: "{{ src_netapp.ip }}"
+dest_hostname: "{{ dest_netapp.ip }}"
+username: "{{ src_netapp.username }}"
+password: "{{ src_netapp.password }}"
+aggr: "{{ src_netapp.src_aggr }}"
+src_cluster: "{{ src_netapp.clustername }}"
+src_vserver: "{{ src_netapp.src_svm }}"
+dest_cluster: "{{ dest_netapp.clustername }}"
+dest_vserver: "{{ dest_netapp.dest_svm }}"
 size: 50
 ostype: aix
 volname: ""

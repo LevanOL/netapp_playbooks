@@ -4,9 +4,13 @@ jc-ntap01p:
   ip: 10.8.49.73
   username: scriptuser
   password: St0rage4321!
+  clusteranme: JC-NTAP01P-01
+  src_aggr: JC_NTAP01_01_VM_DISK_1
+  src_svm: svm1
 
 jp-ntap02p:
   ip: 10.8.49.90
   username: scriptuser
   password: St0rage4321!
-
+  clustername: JP-NTAP02P-01
+  dest_svm: NTAP02P_svm0
