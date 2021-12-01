@@ -1,7 +1,7 @@
 ---
 #
-src_netapp: "{{ jc-ntap01p }}"
-dest_netapp: "{{ jp-ntap02p }}"
+src_netapp: "{{ jcntap01p }}"
+dest_netapp: "{{ jpntap02p }}"
 src_hostname: "{{ src_netapp.ip }}"
 dest_hostname: "{{ dest_netapp.ip }}"
 username: "{{ src_netapp.username }}"

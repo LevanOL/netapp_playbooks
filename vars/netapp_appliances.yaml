@@ -1,6 +1,6 @@
 # Netapp Prod (Source) and DR (Target) Appliances
 
-jc-ntap01p:
+jcntap01p:
   ip: 10.8.49.73
   username: scriptuser
   password: St0rage4321!
@@ -8,7 +8,7 @@ jc-ntap01p:
   src_aggr: JC_NTAP01_01_VM_DISK_1
   src_svm: svm1
 
-jp-ntap02p:
+jpntap02p:
   ip: 10.8.49.90
   username: scriptuser
   password: St0rage4321!
