@@ -41,10 +41,10 @@
     junction_path: "/{{ dest_volname }}"
     space_guarantee: "none"
     type: DP
-    vserver: "{{ src_vserver }}"
-    hostname: "{{ src_hostname }}"
-    username: "{{ src_username }}"
-    password: "{{ src_password }}"
+    vserver: "{{ dest_vserver }}"
+    hostname: "{{ dest_hostname }}"
+    username: "{{ dest_username }}"
+    password: "{{ dest_password }}"
     https: true
     validate_certs: false
 - name: Create Snapmirror
