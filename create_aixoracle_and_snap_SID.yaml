@@ -13,7 +13,7 @@
 # LUN machine_home
     - include_tasks: tasks/create_aixoracle_lun_and_snapmirror.yaml
       vars:
-        suffix: oltest
+        suffix: ol
         size: 1
         volname: "{{ machine }}_{{ suffix }}"
         lunname: "{{ volname }}"
