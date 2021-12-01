@@ -4,7 +4,7 @@ jcntap01p:
   ip: 10.8.49.73
   username: scriptuser
   password: St0rage4321!
-  clusteranme: JC-NTAP01P-01
+  clustername: JC-NTAP01P-01
   src_aggr: JC_NTAP01_01_VM_DISK_1
   src_svm: svm1
 
