@@ -5,7 +5,7 @@ jcntap01p:
   username: scriptuser
   password: St0rage4321!
   clustername: JC-NTAP01P-01
-  src_aggr: JC_NTAP01_01_VM_DISK_1
+  aggr: JC_NTAP01_01_VM_DISK_1
   src_svm: svm1
 
 jpntap02p:
@@ -14,3 +14,5 @@ jpntap02p:
   password: St0rage4321!
   clustername: JP-NTAP02P-01
   dest_svm: NTAP02P_svm0
+  aggr: JP_NTAP02P_01_VM_DISK_1
+

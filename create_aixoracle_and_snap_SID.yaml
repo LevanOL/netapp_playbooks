@@ -15,8 +15,8 @@
       vars:
         suffix: ol
         size: 1
-        volname: "{{ machine }}_{{ suffix }}"
-        lunname: "{{ volname }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
         dest_volname: "dr{{ machine }}_{{ suffix }}"
 
 

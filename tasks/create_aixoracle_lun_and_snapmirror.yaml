@@ -1,12 +1,12 @@
 ---
-- name: Create volume
+- name: Create source volume
   na_ontap_volume:
     state: present
-    name: "{{ volname }}"
-    aggregate_name: "{{ aggr }}"
+    name: "{{ src_volname }}"
+    aggregate_name: "{{ src_aggr }}"
     size: "{{ size }}" 
     size_unit: gb
-    junction_path: "/{{ volname }}"
+    junction_path: "/{{ src_volname }}"
     space_guarantee: "none"
     type: RW
     volume_security_style: unix
@@ -16,12 +16,12 @@
     password: "{{ src_password }}"
     https: true
     validate_certs: false
-- name: Create LUN
+- name: Create source LUN
   na_ontap_lun:
     state: present
     vserver: "{{ src_vserver }}"
     name: "{{ lunname }}"
-    flexvol_name: "{{ volname }}"
+    flexvol_name: "{{ src_volname }}"
     size: "{{ size }}"
     size_unit: gb
     ostype: "{{ ostype }}"
@@ -31,18 +31,33 @@
     hostname: "{{ src_hostname }}"
     username: "{{ src_username }}"
     password: "{{ src_password }}"
+- name: Create dest volume
+  na_ontap_volume:
+    state: present
+    name: "{{ dest_volname }}"
+    aggregate_name: "{{ dest_aggr }}"
+    size: "{{ size }}" 
+    size_unit: gb
+    junction_path: "/{{ dest_volname }}"
+    space_guarantee: "none"
+    type: DP
+    vserver: "{{ src_vserver }}"
+    hostname: "{{ src_hostname }}"
+    username: "{{ src_username }}"
+    password: "{{ src_password }}"
+    https: true
+    validate_certs: false
 - name: Create Snapmirror
   na_ontap_snapmirror:
     state: present
     connection_type: ontap_ontap
     source_endpoint:
-      path: "{{ src_vserver + ':' + volname }}"
+      path: "{{ src_vserver + ':' + src_volname }}"
     destination_endpoint:
-      path: "{{ dest_vserver + ':' + volname }}"
-    create_destination:
-      enabled: true
+      path: "{{ dest_vserver + ':' + dest_volname }}"
     initialize: yes
-    relationship_type: extended_data_protection
+    relationship_type: data_protection
+    schedule: 5min
     relationship_state: active
     policy: DPDefault
     hostname: "{{ dest_hostname }}"
