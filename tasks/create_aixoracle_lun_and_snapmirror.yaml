@@ -36,10 +36,8 @@
     state: present
     connection_type: ontap_ontap
     source_endpoint:
-      cluster: "{{ src_cluster }}"
       path: "{{ src_vserver + ':' + volname }}"
     destination_endpoint:
-      cluster: "{{ dest_cluster }}"
       path: "{{ dest_vserver + ':' + volname }}"
     create_destination:
       enabled: true
