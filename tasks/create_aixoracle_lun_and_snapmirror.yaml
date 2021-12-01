@@ -44,9 +44,8 @@
     create_destination:
       enabled: true
     initialize: yes
-    relationship_type: data_protection
+    relationship_type: extended_data_protection
     relationship_state: active
-    schedule: 5min
     policy: DPDefault
     hostname: "{{ dest_hostname }}"
     username: "{{ dest_username }}"
