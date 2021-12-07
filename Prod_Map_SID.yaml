@@ -1,6 +1,6 @@
 ---
-# Create Production LUNs and Volumes for Oracle DBs on AIX
-# LUNs/Volumes: home, logs1, logs2, arch, dataSID, tempSID
+# Map Production LUNs for a specific Oracle SID host/cluster
+# LUNs: home, logs1, logs2, arch, dataSID, tempSID
 - hosts: localhost
   name: Create LUNS set for Oracle on AIX
   collections:
