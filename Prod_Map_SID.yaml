@@ -1,0 +1,56 @@
+---
+# Create Production LUNs and Volumes for Oracle DBs on AIX
+# LUNs/Volumes: home, logs1, logs2, arch, dataSID, tempSID
+- hosts: localhost
+  name: Create LUNS set for Oracle on AIX
+  collections:
+    - netapp.ontap
+  vars_files:
+    - vars/netapp_appliances.yaml
+    - vars/storage_vars.yaml
+
+  tasks:
+# LUN machine_home
+    - include_tasks: tasks/create_aixoracle_lun.yaml
+      vars:
+        suffix: home
+        size: "{{ size_home }}"
+        volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ volname }}"
+# LUN logs1
+    - include_tasks: tasks/create_aixoracle_lun.yaml
+      vars:
+        suffix: logs1
+        size: 18
+        volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ volname }}"
+# LUN logs2
+    - include_tasks: tasks/create_aixoracle_lun.yaml
+      vars:
+        suffix: logs2
+        size: 18
+        volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ volname }}"
+# LUN arch
+    - include_tasks: tasks/create_aixoracle_lun.yaml
+      vars:
+        suffix: arch
+        size: "{{ size_arch }}"
+        volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ volname }}"
+# LUN data
+    - include_tasks: tasks/create_aixoracle_lun.yaml
+      vars:
+        suffix: "data{{ OSID }}"
+        size: "{{ size_datasid }}"
+        volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ volname }}"
+# LUN temp
+    - include_tasks: tasks/create_aixoracle_lun.yaml
+      vars:
+        suffix: "data{{ OSID }}"
+        size: "{{ size_tempsid }}"
+        volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ volname }}"
+
+      
