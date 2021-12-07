@@ -75,4 +75,17 @@
     password: "{{ dest_password }}"
     https: true
     validate_certs: false
+- name: Rename RF LUN (just cloned)
+  na_ontap_lun:
+    state: present
+    vserver: "{{ dest_vserver }}"
+    name: "{{ dest_rf_volname }}"
+    from_name: "{{ lunname }}"
+    flexvol_name: "{{ dest_rf_volname }}"
+    hostname: "{{ src_hostname }}"
+    username: "{{ src_username }}"
+    password: "{{ src_password }}"
+    https: true
+    validate_certs: false
+
     
