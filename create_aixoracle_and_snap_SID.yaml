@@ -18,6 +18,7 @@
         src_volname: "{{ machine }}_{{ suffix }}"
         lunname: "{{ src_volname }}"
         dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "dr{{ machine }}_rf_{{ suffix }}"
 
 
       

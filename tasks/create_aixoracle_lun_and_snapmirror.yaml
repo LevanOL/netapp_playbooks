@@ -63,4 +63,18 @@
     password: "{{ dest_password }}"
     https: true
     validate_certs: false
+- name: Create dest refresh (_rf_)volume
+  na_ontap_volume:
+    state: present
+    name: "{{ dest_rf_volname }}"
+    aggregate_name: "{{ dest_aggr }}"
+    size: "{{ size }}" 
+    size_unit: gb
+    type: DP
+    vserver: "{{ dest_vserver }}"
+    hostname: "{{ dest_hostname }}"
+    username: "{{ dest_username }}"
+    password: "{{ dest_password }}"
+    https: true
+    validate_certs: false
     
