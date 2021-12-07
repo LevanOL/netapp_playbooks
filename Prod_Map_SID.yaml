@@ -2,7 +2,7 @@
 # Map Production LUNs for a specific Oracle SID host/cluster
 # LUNs: home, logs1, logs2, arch, dataSID, tempSID
 - hosts: localhost
-  name: Create LUNS set for Oracle on AIX
+  name: Map Production LUNS set for a specific SID
   collections:
     - netapp.ontap
   vars_files:
