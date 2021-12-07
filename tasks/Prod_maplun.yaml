@@ -1,0 +1,12 @@
+---
+- name: Map LUN on Prod machine hosting SID
+  na_ontap_lun_map:
+    state: present
+    initiator_group_name: "{{ igroup_name }}"
+    path: "{{ lunpath }}"
+    vserver: "{{ src_vserver }}"
+    hostname: "{{ src_hostname }}"
+    username: "{{ src_username }}"
+    password: "{{ src_password }}"
+    https: true
+    validate_certs: false

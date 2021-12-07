@@ -11,46 +11,46 @@
 
   tasks:
 # LUN machine_home
-    - include_tasks: tasks/create_aixoracle_lun.yaml
+    - include_tasks: tasks/Prod_maplun.yaml
       vars:
         suffix: home
-        size: "{{ size_home }}"
         volname: "{{ machine }}_{{ suffix }}"
         lunname: "{{ volname }}"
+        lunpath: "{{ '/' + volname + '/' + lunname }}"
 # LUN logs1
-    - include_tasks: tasks/create_aixoracle_lun.yaml
+    - include_tasks: tasks/Prod_maplun.yaml
       vars:
         suffix: logs1
-        size: 18
         volname: "{{ machine }}_{{ suffix }}"
         lunname: "{{ volname }}"
+        lunpath: "{{ '/' + volname + '/' + lunname }}"
 # LUN logs2
-    - include_tasks: tasks/create_aixoracle_lun.yaml
+    - include_tasks: tasks/Prod_maplun.yaml
       vars:
         suffix: logs2
-        size: 18
         volname: "{{ machine }}_{{ suffix }}"
         lunname: "{{ volname }}"
+        lunpath: "{{ '/' + volname + '/' + lunname }}"
 # LUN arch
-    - include_tasks: tasks/create_aixoracle_lun.yaml
+    - include_tasks: tasks/Prod_maplun.yaml
       vars:
         suffix: arch
-        size: "{{ size_arch }}"
         volname: "{{ machine }}_{{ suffix }}"
         lunname: "{{ volname }}"
+        lunpath: "{{ '/' + volname + '/' + lunname }}"
 # LUN data
-    - include_tasks: tasks/create_aixoracle_lun.yaml
+    - include_tasks: tasks/Prod_maplun.yaml
       vars:
         suffix: "data{{ OSID }}"
         size: "{{ size_datasid }}"
-        volname: "{{ machine }}_{{ suffix }}"
         lunname: "{{ volname }}"
+        lunpath: "{{ '/' + volname + '/' + lunname }}"
 # LUN temp
-    - include_tasks: tasks/create_aixoracle_lun.yaml
+    - include_tasks: tasks/Prod_maplun.yaml
       vars:
         suffix: "data{{ OSID }}"
         size: "{{ size_tempsid }}"
-        volname: "{{ machine }}_{{ suffix }}"
         lunname: "{{ volname }}"
+        lunpath: "{{ '/' + volname + '/' + lunname }}"
 
       
