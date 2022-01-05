@@ -1,0 +1,23 @@
+---
+# Cleanup task to remove extra snapshots
+# LUNs/Volumes: home, logs1, logs2, arch, dataSID, tempSID
+- hosts: localhost
+  name: Cleanup the temporary snapshots created during the first run of creation
+  collections:
+    - netapp.ontap
+  vars_files:
+    - vars/netapp_appliances_aggr_02.yaml
+    - vars/storage_vars.yaml
+
+  tasks:
+# LUN machine_home
+    - include_tasks: tasks/cleanup_snaps.yaml
+      vars:
+        suffix: home
+        src_volname: "{{ machine }}_{{ suffix }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "dr{{ machine }}_rf_{{ suffix }}"
+
+
+
+      
