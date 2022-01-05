@@ -1,7 +1,7 @@
 ---
 #
-src_netapp: "{{ c1naclu01 }}"
-dest_netapp: "{{ c3naclu01 }}"
+src_netapp: "{{ c3naclu01 }}"
+dest_netapp: "{{ c1naclu01 }}"
 src_hostname: "{{ src_netapp.ip }}"
 dest_hostname: "{{ dest_netapp.ip }}"
 src_username: "{{ src_netapp.username }}"
