@@ -48,7 +48,7 @@
 # LUN temp
     - include_tasks: tasks/create_aixoracle_lun.yaml
       vars:
-        suffix: "data{{ OSID }}"
+        suffix: "temp{{ OSID }}"
         size: "{{ size_tempsid }}"
         src_volname: "{{ machine }}_{{ suffix }}"
         lunname: "{{ src_volname }}"
