@@ -2,7 +2,7 @@
 - name: Create snapshot of snapmirrored volume
   na_ontap_snapshot:
     state: present
-    snapshot: "{{ dest_volname_tempbkp }}"
+    snapshot: "{{ dest_volname }}_tempbkp"
     volume: "{{ dest_volname }}"
     vserver: "{{ dest_vserver }}"
     username: "{{ dest_username }}"
@@ -15,7 +15,7 @@
     name: "{{ dest_rf_volname }}"
     parent_volume: "{{ dest_volname }}"
     junction_path: "/{{ dest_rf_volname }}"
-    parent_snapshot: "{{ dest_volname_tempbkp }}"
+    parent_snapshot: "{{ dest_volname }}_tempbkp"
     vserver: "{{ dest_vserver }}"
     hostname: "{{ dest_hostname }}"
     username: "{{ dest_username }}"
@@ -38,7 +38,7 @@
 - name: Delete temporary snapshot
   na_ontap_snapshot:
     state: absent
-    snapshot: "{{ dest_volname_tempbkp }}"
+    snapshot: "{{ dest_volname }}_tempbkp"
     volume: "{{ dest_volname }}"
     vserver: "{{ dest_vserver }}"
     username: "{{ dest_username }}"
