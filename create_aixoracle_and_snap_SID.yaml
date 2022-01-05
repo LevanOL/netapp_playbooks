@@ -26,6 +26,81 @@
         lunname: "{{ src_volname }}"
         dest_volname: "dr{{ machine }}_{{ suffix }}"
         dest_rf_volname: "dr{{ machine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/create_aixoracle_lun_and_snapmirror.yaml
+      vars:
+        suffix: logs1
+        size: "{{ size_logs }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "dr{{ machine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/create_rf_lun.yaml
+      vars:
+        suffix: logs1
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "dr{{ machine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/create_aixoracle_lun_and_snapmirror.yaml
+      vars:
+        suffix: logs2
+        size: "{{ size_logs }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "dr{{ machine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/create_rf_lun.yaml
+      vars:
+        suffix: logs2
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "dr{{ machine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/create_aixoracle_lun_and_snapmirror.yaml
+      vars:
+        suffix: arch
+        size: "{{ size_arch }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "dr{{ machine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/create_rf_lun.yaml
+      vars:
+        suffix: arch
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "dr{{ machine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/create_aixoracle_lun_and_snapmirror.yaml
+      vars:
+        suffix: "data{{ sid }}"
+        size: "{{ size_datasid }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "dr{{ machine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/create_rf_lun.yaml
+      vars:
+        suffix: "data{{ sid }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "dr{{ machine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/create_aixoracle_lun_and_snapmirror.yaml
+      vars:
+        suffix: "temp{{ sid }}"
+        size: "{{ size_tempsid }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "dr{{ machine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/create_rf_lun.yaml
+      vars:
+        suffix: "temp{{ sid }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "dr{{ machine }}_rf_{{ suffix }}"
 
 
       
