@@ -6,7 +6,7 @@
   collections:
     - netapp.ontap
   vars_files:
-    - vars/netapp_appliances.yaml
+    - vars/netapp_appliances_aggr_02.yaml
     - vars/storage_vars.yaml
 
   tasks:
