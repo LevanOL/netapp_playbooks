@@ -31,6 +31,17 @@
     hostname: "{{ src_hostname }}"
     username: "{{ src_username }}"
     password: "{{ src_password }}"
+- name: Create snapshot of source volume to be used as clone base for rf volumes at DR
+  na_ontap_snapshot:
+    state: present
+    snapshot: "{{ src_volname }}_tempbkp"
+    volume: "{{ src_volname }}"
+    vserver: "{{ src_vserver }}"
+    username: "{{ src_username }}"
+    password: "{{ src_password }}"
+    hostname: "{{ src_hostname }}"
+    https: true
+    validate_certs: false
 - name: Create dest volume
   na_ontap_volume:
     state: present
