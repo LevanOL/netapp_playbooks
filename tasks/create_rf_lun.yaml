@@ -20,9 +20,9 @@
     name: "{{ dest_rf_volname }}"
     from_name: "{{ lunname }}"
     flexvol_name: "{{ dest_rf_volname }}"
-    hostname: "{{ src_hostname }}"
-    username: "{{ src_username }}"
-    password: "{{ src_password }}"
+    hostname: "{{ dest_hostname }}"
+    username: "{{ dest_username }}"
+    password: "{{ dest_password }}"
     https: true
     validate_certs: false
 - name: Delete temporary snapshot
