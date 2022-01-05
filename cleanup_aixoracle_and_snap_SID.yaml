@@ -17,6 +17,37 @@
         src_volname: "{{ machine }}_{{ suffix }}"
         dest_volname: "dr{{ machine }}_{{ suffix }}"
         dest_rf_volname: "dr{{ machine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/cleanup_snaps.yaml
+      vars:
+        suffix: logs1
+        src_volname: "{{ machine }}_{{ suffix }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "dr{{ machine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/cleanup_snaps.yaml
+      vars:
+        suffix: logs2
+        src_volname: "{{ machine }}_{{ suffix }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "dr{{ machine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/cleanup_snaps.yaml
+      vars:
+        suffix: arch
+        src_volname: "{{ machine }}_{{ suffix }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "dr{{ machine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/cleanup_snaps.yaml
+      vars:
+        suffix: "data{{ sid }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "dr{{ machine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/cleanup_snaps.yaml
+      vars:
+        suffix: "temp{{ sid }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "dr{{ machine }}_rf_{{ suffix }}"
+
 
 
 
