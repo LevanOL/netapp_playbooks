@@ -8,6 +8,7 @@ c1naclu01:
   clustername: C1NACLU01
   aggr: C1NACLU01_02_NVME_SSD_1
   src_svm: C1NACLU01_svm2
+  dest_svm: C1NACLU01_svm2
 
 # JP
 c3naclu01:
@@ -16,5 +17,6 @@ c3naclu01:
   password: St0rage4321!
   clustername: C3NACLU01
   dest_svm: C3NACLU01_svm2
+  src_svm: C3NACLU01_svm2
   aggr: C3NACLU01_02_NVME_SSD_1
 
