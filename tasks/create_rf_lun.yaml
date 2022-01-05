@@ -1,0 +1,49 @@
+---
+- name: Create snapshot of snapmirrored volume
+  na_ontap_snapshot:
+    state: present
+    snapshot: "{{ dest_volname_tempbkp }}"
+    volume: "{{ dest_volname }}"
+    vserver: "{{ dest_vserver }}"
+    username: "{{ dest_username }}"
+    password: "{{ dest_password }}"
+    hostname: "{{ dest_hostname }}"
+    
+- name: Create dest refresh (_rf_)volume by cloning the mirrored volume
+  na_ontap_volume_clone:
+    state: present
+    name: "{{ dest_rf_volname }}"
+    parent_volume: "{{ dest_volname }}"
+    junction_path: "/{{ dest_rf_volname }}"
+    parent_snapshot: "{{ dest_volname_tempbkp }}"
+    vserver: "{{ dest_vserver }}"
+    hostname: "{{ dest_hostname }}"
+    username: "{{ dest_username }}"
+    password: "{{ dest_password }}"
+    https: true
+    validate_certs: false
+    split: yes
+- name: Rename RF LUN (just cloned)
+  na_ontap_lun:
+    state: present
+    vserver: "{{ dest_vserver }}"
+    name: "{{ dest_rf_volname }}"
+    from_name: "{{ lunname }}"
+    flexvol_name: "{{ dest_rf_volname }}"
+    hostname: "{{ src_hostname }}"
+    username: "{{ src_username }}"
+    password: "{{ src_password }}"
+    https: true
+    validate_certs: false
+- name: Delete temporary snapshot
+    state: absent
+    snapshot: "{{ dest_volname_tempbkp }}"
+    volume: "{{ dest_volname }}"
+    vserver: "{{ dest_vserver }}"
+    username: "{{ dest_username }}"
+    password: "{{ dest_password }}"
+    hostname: "{{ dest_hostname }}"
+
+
+
+    
