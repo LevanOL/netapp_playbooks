@@ -25,17 +25,6 @@
     password: "{{ dest_password }}"
     https: true
     validate_certs: false
-- name: Delete target temporary snapshot
-  na_ontap_snapshot:
-    state: absent
-    snapshot: "{{ src_volname }}_tempbkp"
-    volume: "{{ dest_rf_volname }}"
-    vserver: "{{ dest_vserver }}"
-    username: "{{ dest_username }}"
-    password: "{{ dest_password }}"
-    hostname: "{{ dest_hostname }}"
-    https: true
-    validate_certs: false
 - name: Delete source temporary snapshot
   na_ontap_snapshot:
     state: absent
@@ -45,5 +34,16 @@
     username: "{{ src_username }}"
     password: "{{ src_password }}"
     hostname: "{{ src_hostname }}"
+    https: true
+    validate_certs: false
+- name: Delete target temporary snapshot
+  na_ontap_snapshot:
+    state: absent
+    snapshot: "{{ src_volname }}_tempbkp"
+    volume: "{{ dest_rf_volname }}"
+    vserver: "{{ dest_vserver }}"
+    username: "{{ dest_username }}"
+    password: "{{ dest_password }}"
+    hostname: "{{ dest_hostname }}"
     https: true
     validate_certs: false
