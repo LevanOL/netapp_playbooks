@@ -36,6 +36,7 @@
     https: true
     validate_certs: false
 - name: Delete temporary snapshot
+  na_ontap_snapshot:
     state: absent
     snapshot: "{{ dest_volname_tempbkp }}"
     volume: "{{ dest_volname }}"
