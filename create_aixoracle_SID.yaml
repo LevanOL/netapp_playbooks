@@ -15,42 +15,42 @@
       vars:
         suffix: home
         size: "{{ size_home }}"
-        volname: "{{ machine }}_{{ suffix }}"
-        lunname: "{{ volname }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
 # LUN logs1
     - include_tasks: tasks/create_aixoracle_lun.yaml
       vars:
         suffix: logs1
         size: 50
-        volname: "{{ machine }}_{{ suffix }}"
-        lunname: "{{ volname }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
 # LUN logs2
     - include_tasks: tasks/create_aixoracle_lun.yaml
       vars:
         suffix: logs2
         size: 50
-        volname: "{{ machine }}_{{ suffix }}"
-        lunname: "{{ volname }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
 # LUN arch
     - include_tasks: tasks/create_aixoracle_lun.yaml
       vars:
         suffix: arch
         size: "{{ size_arch }}"
-        volname: "{{ machine }}_{{ suffix }}"
-        lunname: "{{ volname }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
 # LUN data
     - include_tasks: tasks/create_aixoracle_lun.yaml
       vars:
         suffix: "data{{ OSID }}"
         size: "{{ size_datasid }}"
-        volname: "{{ machine }}_{{ suffix }}"
-        lunname: "{{ volname }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
 # LUN temp
     - include_tasks: tasks/create_aixoracle_lun.yaml
       vars:
         suffix: "data{{ OSID }}"
         size: "{{ size_tempsid }}"
-        volname: "{{ machine }}_{{ suffix }}"
-        lunname: "{{ volname }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
 
       
