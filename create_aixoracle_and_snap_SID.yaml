@@ -14,7 +14,6 @@
     - include_tasks: tasks/create_aixoracle_lun_and_snapmirror.yaml
       vars:
         suffix: home
-        
         size: "{{ size_home }}"
         src_volname: "{{ machine }}_{{ suffix }}"
         lunname: "{{ src_volname }}"
