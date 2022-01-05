@@ -8,6 +8,8 @@
     username: "{{ dest_username }}"
     password: "{{ dest_password }}"
     hostname: "{{ dest_hostname }}"
+    https: true
+    validate_certs: false
     
 - name: Create dest refresh (_rf_)volume by cloning the mirrored volume
   na_ontap_volume_clone:
@@ -44,6 +46,8 @@
     username: "{{ dest_username }}"
     password: "{{ dest_password }}"
     hostname: "{{ dest_hostname }}"
+    https: true
+    validate_certs: false
 
 
 
