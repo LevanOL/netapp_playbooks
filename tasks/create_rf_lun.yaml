@@ -36,7 +36,3 @@
     hostname: "{{ dest_hostname }}"
     https: true
     validate_certs: false
-
-
-
-    
