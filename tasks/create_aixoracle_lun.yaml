@@ -4,7 +4,7 @@
     state: present
     name: "{{ src_volname }}"
     aggregate_name: "{{ src_aggr }}"
-    size: "{{ size }}" 
+    size: "{{ 1.2 * size }}" 
     size_unit: gb
     junction_path: "/{{ src_volname }}"
     space_guarantee: "none"

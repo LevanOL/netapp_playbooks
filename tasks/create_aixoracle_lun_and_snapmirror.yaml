@@ -4,12 +4,13 @@
     state: present
     name: "{{ src_volname }}"
     aggregate_name: "{{ src_aggr }}"
-    size: "{{ size }}" 
+    size: "{{ 1.2 * size }}" 
     size_unit: gb
     junction_path: "/{{ src_volname }}"
     space_guarantee: "none"
     type: RW
     volume_security_style: unix
+    snapshot_policy: none
     vserver: "{{ src_vserver }}"
     hostname: "{{ src_hostname }}"
     username: "{{ src_username }}"
@@ -47,7 +48,7 @@
     state: present
     name: "{{ dest_volname }}"
     aggregate_name: "{{ dest_aggr }}"
-    size: "{{ size }}" 
+    size: "{{ 1.2 * size }}" 
     size_unit: gb
     type: DP
     vserver: "{{ dest_vserver }}"
