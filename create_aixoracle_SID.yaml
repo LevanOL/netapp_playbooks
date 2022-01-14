@@ -21,14 +21,14 @@
     - include_tasks: tasks/create_aixoracle_lun.yaml
       vars:
         suffix: logs1
-        size: 50
+        size: "{{ size_logs }}"
         src_volname: "{{ machine }}_{{ suffix }}"
         lunname: "{{ src_volname }}"
 # LUN logs2
     - include_tasks: tasks/create_aixoracle_lun.yaml
       vars:
         suffix: logs2
-        size: 50
+        size: "{{ size_logs }}"
         src_volname: "{{ machine }}_{{ suffix }}"
         lunname: "{{ src_volname }}"
 # LUN arch

@@ -11,6 +11,7 @@
     inline_compression: yes
     type: RW
     volume_security_style: unix
+    snapshot_policy: none
     vserver: "{{ src_vserver }}"
     hostname: "{{ src_hostname }}"
     username: "{{ src_username }}"
