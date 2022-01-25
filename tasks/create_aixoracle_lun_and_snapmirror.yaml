@@ -23,7 +23,7 @@
     increment_size: 10g
     mode: grow
     grow_threshold_percent: 80
-    maximum_size:  "{{ 2 * size }}"
+    maximum_size:  "{{ 2 * size }}g"
     vserver: "{{ src_vserver }}"
     hostname: "{{ src_hostname }}"
     username: "{{ src_username }}"
