@@ -17,6 +17,19 @@
     password: "{{ src_password }}"
     https: true
     validate_certs: false
+- name: Modify Autosize
+  na_ontap_volume_autosize:
+    volume: "{{ src_volname }}"
+    increment_size: 10g
+    mode: grow
+    grow_threshold_percent: 80
+    maximum_size:  "{{ 2 * size }}"
+    vserver: "{{ src_vserver }}"
+    hostname: "{{ src_hostname }}"
+    username: "{{ src_username }}"
+    password: "{{ src_password }}"
+    https: true
+    validate_certs: false
 - name: Create source LUN
   na_ontap_lun:
     state: present
