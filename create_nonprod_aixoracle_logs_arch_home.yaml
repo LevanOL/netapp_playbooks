@@ -1,0 +1,40 @@
+---
+# Create Non Production LUNs and Volumes for Oracle DBs on AIX
+# LUNs/Volumes: home, logs1, logs2, arch
+- hosts: localhost
+  name: Create LUNS set for Oracle on AIX at DR
+  collections:
+    - netapp.ontap
+  vars_files:
+    - vars/netapp_appliances_aggr_01.yaml
+    - vars/storage_vars.yaml
+
+  tasks:
+    - include_tasks: tasks/create_nonprod_aixoracle_lun.yaml
+      vars:
+        suffix: home
+        size: "{{ size_home }}"
+        dest_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ dest_volname }}"
+    - include_tasks: tasks/create_nonprod_aixoracle_lun.yaml
+      vars:
+        suffix: logs1
+        size: "{{ size_logs }}"
+        dest_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ dest_volname }}"
+    - include_tasks: tasks/create_nonprod_aixoracle_lun.yaml
+      vars:
+        suffix: logs2
+        size: "{{ size_logs }}"
+        dest_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ dest_volname }}"
+    - include_tasks: tasks/create_nonprod_aixoracle_lun.yaml
+      vars:
+        suffix: arch
+        size: "{{ size_arch }}"
+        dest_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ dest_volname }}"
+
+
+
+      

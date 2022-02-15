@@ -1,0 +1,22 @@
+# Netapp Prod (Source) and DR (Target) Appliances
+
+# Q9
+c1naclu01:
+  ip: 10.65.49.180
+  username: scriptuser
+  password: St0rage4321!
+  clustername: C1NACLU01
+  aggr: C1NACLU01_01_NVME_SSD_1
+  src_svm: C1NACLU01_svm2
+  dest_svm: C1NACLU01_svm2
+
+# JP
+c3naclu01:
+  ip: 10.8.49.180
+  username: scriptuser
+  password: St0rage4321!
+  clustername: C3NACLU01
+  dest_svm: C3NACLU01_svm2
+  src_svm: C3NACLU01_svm2
+  aggr: C3NACLU01_01_NVME_SSD_1
+

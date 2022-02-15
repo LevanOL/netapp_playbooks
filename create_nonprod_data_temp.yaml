@@ -1,0 +1,29 @@
+---
+# Create Non Production LUNs and Volumes for Oracle DBs on AIX
+# LUNs/Volumes: dataSID, tempSID
+- hosts: localhost
+  name: Create LUNS set for Oracle on AIX at DR
+  collections:
+    - netapp.ontap
+  vars_files:
+    - vars/netapp_appliances_aggr_01.yaml
+    - vars/storage_vars.yaml
+
+  tasks:
+# LUN machine_home
+    - include_tasks: tasks/create_nonprod_aixoracle_lun.yaml
+      vars:
+        suffix: "data{{ sid }}"
+        size: "{{ size_datasid }}"
+        dest_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ dest_volname }}"
+    - include_tasks: tasks/create_aixoracle_lun.yaml
+      vars:
+        suffix: "temp{{ sid }}"
+        size: "{{ size_tempsid }}"
+        dest_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ dest_volname }}"
+
+
+
+      

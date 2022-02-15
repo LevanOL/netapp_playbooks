@@ -1,0 +1,47 @@
+---
+- name: Create nonprod volume
+  na_ontap_volume:
+    state: present
+    name: "{{ dest_volname }}"
+    aggregate_name: "{{ dest_aggr }}"
+    size: "{{ (1.2 * size |float) |int  }}" 
+    size_unit: gb
+    junction_path: "/{{ dest_volname }}"
+    space_guarantee: "none"
+    type: RW
+    volume_security_style: unix
+    snapshot_policy: none
+    vserver: "{{ dest_vserver }}"
+    hostname: "{{ dest_hostname }}"
+    username: "{{ dest_username }}"
+    password: "{{ dest_password }}"
+    https: true
+    validate_certs: false
+- name: Modify Autosize
+  na_ontap_volume_autosize:
+    volume: "{{ dest_volname }}"
+    increment_size: 10g
+    mode: grow
+    grow_threshold_percent: 80
+    maximum_size:  "{{ 2 * size }}g"
+    vserver: "{{ dest_vserver }}"
+    hostname: "{{ dest_hostname }}"
+    username: "{{ dest_username }}"
+    password: "{{ dest_password }}"
+    https: true
+    validate_certs: false
+- name: Create nonprod LUN
+  na_ontap_lun:
+    state: present
+    vserver: "{{ dest_vserver }}"
+    name: "{{ lunname }}"
+    flexvol_name: "{{ dest_volname }}"
+    size: "{{ size }}"
+    size_unit: gb
+    ostype: "{{ ostype }}"
+    space_reserve: False
+    https: true
+    validate_certs: false
+    hostname: "{{ dest_hostname }}"
+    username: "{{ dest_username }}"
+    password: "{{ dest_password }}"
