@@ -17,7 +17,7 @@
         size: "{{ size_datasid }}"
         dest_volname: "{{ machine }}_{{ suffix }}"
         lunname: "{{ dest_volname }}"
-    - include_tasks: tasks/create_aixoracle_lun.yaml
+    - include_tasks: tasks/create_nonprod_aixoracle_lun.yaml
       vars:
         suffix: "temp{{ sid }}"
         size: "{{ size_tempsid }}"
