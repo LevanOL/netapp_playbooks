@@ -12,8 +12,8 @@
   tasks:
     - include_tasks: tasks/create_nonprod_other_lun.yaml
       vars:
-        suffix: "{{ suffix }}"
-        size: "{{ size_home }}"
+        suffix: "{{ suffix_othervol }}"
+        size: "{{ size_othervol }}"
         dest_volname: "{{ machine }}_{{ suffix }}"
         lunname: "{{ dest_volname }}"
 
