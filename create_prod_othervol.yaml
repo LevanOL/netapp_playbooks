@@ -1,0 +1,23 @@
+---
+# Create Production LUNs and Volumes for Other AIX purpose (hb for ex)
+# Single LUN/Volume provided the suffix in playbook survey
+- hosts: localhost
+  name: Create LUNS set for Other  purpose
+  collections:
+    - netapp.ontap
+  vars_files:
+    - vars/netapp_appliances_aggr_02.yaml
+    - vars/storage_vars.yaml
+
+  tasks:
+    - include_tasks: tasks/create_prod_other_lun.yaml
+      vars:
+        suffix: "{{ suffix_othervol }}"
+        size: "{{ size_othervol }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
+
+
+
+
+      
