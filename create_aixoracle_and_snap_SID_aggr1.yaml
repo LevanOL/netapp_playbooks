@@ -1,0 +1,106 @@
+---
+# Create Production LUNs and Volumes for Oracle DBs on AIX
+# LUNs/Volumes: home, logs1, logs2, arch, dataSID, tempSID
+- hosts: localhost
+  name: Create LUNS set for Oracle on AIX with snapmirror relationship
+  collections:
+    - netapp.ontap
+  vars_files:
+    - vars/netapp_appliances_aggr_01.yaml
+    - vars/storage_vars.yaml
+
+  tasks:
+# LUN machine_home
+    - include_tasks: tasks/create_aixoracle_lun_and_snapmirror.yaml
+      vars:
+        suffix: home
+        size: "{{ size_home }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "{{ drmachine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/create_aixoracle_lun_and_snapmirror.yaml
+      vars:
+        suffix: logs1
+        size: "{{ size_logs }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "{{ drmachine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/create_aixoracle_lun_and_snapmirror.yaml
+      vars:
+        suffix: logs2
+        size: "{{ size_logs }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "{{ drmachine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/create_aixoracle_lun_and_snapmirror.yaml
+      vars:
+        suffix: arch
+        size: "{{ size_arch }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "{{ drmachine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/create_aixoracle_lun_and_snapmirror.yaml
+      vars:
+        suffix: "data{{ sid }}"
+        size: "{{ size_datasid }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "{{ drmachine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/create_aixoracle_lun_and_snapmirror.yaml
+      vars:
+        suffix: "temp{{ sid }}"
+        size: "{{ size_tempsid }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "{{ drmachine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/create_rf_lun.yaml
+      vars:
+        suffix: home
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "{{ drmachine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/create_rf_lun.yaml
+      vars:
+        suffix: logs1
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "{{ drmachine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/create_rf_lun.yaml
+      vars:
+        suffix: logs2
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "{{ drmachine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/create_rf_lun.yaml
+      vars:
+        suffix: arch
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "{{ drmachine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/create_rf_lun.yaml
+      vars:
+        suffix: "data{{ sid }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "{{ drmachine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/create_rf_lun.yaml
+      vars:
+        suffix: "temp{{ sid }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "{{ drmachine }}_rf_{{ suffix }}"
+
+
+      
