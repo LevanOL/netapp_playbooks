@@ -1,0 +1,31 @@
+---
+# Create Production LUNs and Volumes  on AIX with replica and rf LUN
+# LUNs/Volumes: determined by survey; one volume only
+- hosts: localhost
+  name: Create LUNS set for Oracle on AIX with snapmirror relationship
+  collections:
+    - netapp.ontap
+  vars_files:
+    - vars/netapp_appliances_aggr_01.yaml
+    - vars/storage_vars.yaml
+
+  tasks:
+# LUN machine_home
+    - include_tasks: tasks/create_aixoracle_lun_and_snapmirror.yaml
+      vars:
+        suffix: "{{ suffix_othervol }}"
+        size: "{{ size_othervol }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "{{ drmachine }}_rf_{{ suffix }}"
+    - include_tasks: tasks/create_rf_lun.yaml
+      vars:
+        suffix: "{{ suffix_othervol }}"
+        src_volname: "{{ machine }}_{{ suffix }}"
+        lunname: "{{ src_volname }}"
+        dest_volname: "dr{{ machine }}_{{ suffix }}"
+        dest_rf_volname: "{{ drmachine }}_rf_{{ suffix }}"
+
+
+      
